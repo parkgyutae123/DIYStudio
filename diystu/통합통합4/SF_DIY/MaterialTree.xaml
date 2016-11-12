@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="SF_DIY.MaterialTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SF_DIY"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:domain="clr-namespace:SF_DIY_Domain"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+
+    <TreeView Name="MainTree" MinWidth="220">
+        <TreeViewItem Header="욕실" >
+            <TreeViewItem Header="욕조1" Name="Whirlpool"  PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="욕조2" Name="Whirlpool2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="샤워커튼1" Name="Showercurtain" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="세면대1" Name="세면대" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="세면대2" Name="세면대2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="세탁기" Name="세탁기" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="변기1" Name="변기1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="변기2" Name="변기2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="샤워기" Name="샤워기" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+        </TreeViewItem>
+
+        <TreeViewItem Header="침실" >
+            <TreeViewItem Header="침대1" Name="Bed1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="침대2" Name="Bed2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="에어컨1" Name="에어컨" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="책장1" Name="bookcase" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="옷장1" Name="clothcase" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="옷장2" Name="옷장" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="책상1" Name="Desk1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="책상2" Name="Desk2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="서랍장" Name="서랍장" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+        </TreeViewItem>
+        <TreeViewItem Header="거실" >
+            <TreeViewItem Header="소파1" Name="소파1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="소파2" Name="소파2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="TV1" Name="TV1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="TV2" Name="TV2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="테이블1" Name="Table1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="테이블2" Name="Table2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="테이블3" Name="Table3" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="의자1" Name="Chair1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="의자2" Name="Chair2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="PC1" Name="PC1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="PC2" Name="PC2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="쓰레기통" Name="송민상" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="스피커" Name="스피커" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="선반1" Name="선반1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="선반2" Name="선반2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+        </TreeViewItem>
+        <TreeViewItem Header="주방" >
+            <TreeViewItem Header="냉장고" Name="냉장고" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="냉장고2" Name="냉장고2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="냉장고3" Name="냉장고3" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="식기세척기" Name="dishwasher" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="전자렌지" Name="전자렌지" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="주방" Name="주방" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="접시세트" Name="접시세트" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+
+        </TreeViewItem>
+        <TreeViewItem Header="문" >
+            <TreeViewItem Header="문" Name="door1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="문2" Name="door2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="문3" Name="door3" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+        </TreeViewItem>
+        <TreeViewItem Header="기타" >
+            <TreeViewItem Header="피아노" Name="피아노" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="라디에이터" Name="라디에이터" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="액자1" Name="액자1" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="액자2" Name="액자2" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+            <TreeViewItem Header="액자3" Name="액자3" PreviewMouseLeftButtonDown="ModelAdd_MouseClick"/>
+        </TreeViewItem>
+        <TreeViewItem Name="ObjTree" Header="인테리어소품">
+
+        </TreeViewItem>
+        <TreeViewItem Name="UserFurniture" Header="사용자제작" >
+        </TreeViewItem>
+    </TreeView>
+</UserControl>

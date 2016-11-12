@@ -1,0 +1,109 @@
+﻿<Window x:Class="SF_DIY.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:domain="clr-namespace:SF_DIY_Domain"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:SF_DIY"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        mc:Ignorable="d"
+        Title="DIY Virtual Studio" WindowState="Maximized" Icon="Icons/DIYIcon.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- data template used for the dialogs example, defines a View for a ViewModel of type DateTime  -->
+            <!--<DataTemplate DataType="{x:Type system:DateTime}">
+                <StackPanel Margin="16">
+                    <TextBlock>England win the World Cup:</TextBlock>
+                    <TextBlock Margin="0 8 0 0" Text="{Binding }" />
+                    <TextBlock Margin="0 8 0 0" >You will never see that again.</TextBlock>
+                    <Button  Margin="0 8 0 0" IsDefault="True" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">AWESOME</Button>
+                </StackPanel>
+            </DataTemplate>-->
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName= MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="212">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                  DockPanel.Dock="Top"
+                                  HorizontalAlignment="Right" Margin="16"
+                                  IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"/>
+                    <ListBox x:Name="ItemsListBox" Margin="0 16 0 16" SelectedIndex="0"
+                             PreviewMouseLeftButtonUp="ItemsListBox_PreviewMouseLeftButtonUp">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="domain:ProgramItem">
+                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <domain:ProgramItem Name="DIY 가구 제작">
+                            <domain:ProgramItem.Content>
+                                <local:DoItYourSlefControl/>
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+                        <domain:ProgramItem Name="가구 시뮬레이션">
+                            <domain:ProgramItem.Content>
+                                <local:SimulateFurniture/>
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+                        <domain:ProgramItem Name="가구 인테리어 배치 ">
+                            <domain:ProgramItem.Content>
+                                <local:InteriorControl/>
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+                        <domain:ProgramItem Name="테마 설정">
+                            <domain:ProgramItem.Content>
+                                <local:ThemeSelector>
+                                    <local:ThemeSelector.DataContext>
+                                        <local:ThemeSelectorViewModel/>
+                                    </local:ThemeSelector.DataContext>
+                                </local:ThemeSelector>
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+
+                        <domain:ProgramItem Name="가격 확인">
+                            <domain:ProgramItem.Content>
+                                <local:PrintPreView />
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+
+                        <domain:ProgramItem Name="도움말">
+                            <domain:ProgramItem.Content>
+                                <local:HelpControl />
+                            </domain:ProgramItem.Content>
+                        </domain:ProgramItem>
+                    </ListBox>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel>
+                <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <DockPanel>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                      x:Name="MenuToggleButton"/>
+                        <!--<materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <StackPanel>
+                                <Button>박규태짱</Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>-->
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">
+                            
+                        </TextBlock>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <ContentControl Margin="16" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}"/>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
+</Window>

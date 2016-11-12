@@ -1,0 +1,36 @@
+CREATE TABLE [dbo].[Board_lumber](
+	[Name] [varchar](50) NULL,
+	[Height] [float] NOT NULL,
+	[Price] [float] NOT NULL,
+	[Texture] [varchar](50) NOT NULL,
+	[MaxLength] [int] NOT NULL,
+	[MinLength] [int] NOT NULL,
+	[MaxWidth] [int] NOT NULL,
+	[MinWidth] [int] NOT NULL
+) ON [PRIMARY]
+
+CREATE TABLE [dbo].[Cylinder_lumber](
+	[Name] [varchar](50) NULL,
+	[diameter] [float] NOT NULL,
+	[MaxLength] [int] NOT NULL,
+	[Price] [float] NOT NULL,
+	[Texture] [varchar](50) NOT NULL
+) ON [PRIMARY]
+
+CREATE TABLE [dbo].[Rectangular_lumber](
+	[Name] [varchar](50) NULL,
+	[Width] [float] NOT NULL,
+	[Height] [float] NOT NULL,
+	[MaxLength] [int] NOT NULL,
+	[Price] [float] NOT NULL,
+	[Texture] [varchar](50) NOT NULL
+) ON [PRIMARY]
+
+CREATE TABLE [dbo].[Texture](
+	[TextureName] [varchar](50) NOT NULL,
+	[TextureImage] [image] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TextureName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]

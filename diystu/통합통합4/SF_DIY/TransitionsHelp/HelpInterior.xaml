@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="SF_DIY.TransitionsHelp.HelpInterior"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_DIY.TransitionsHelp"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="750" Width="1200">
+    <StackPanel>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="1000"  Height="600">
+            <Grid.Background>
+                <ImageBrush ImageSource="인테리어도움말1.PNG"/>
+            </Grid.Background>
+        </Grid>
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" 
+                   Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
+                    Margin="16">
+            <materialDesign:PackIcon Kind="StepForward" />
+        </Button>
+    </StackPanel>
+</UserControl>

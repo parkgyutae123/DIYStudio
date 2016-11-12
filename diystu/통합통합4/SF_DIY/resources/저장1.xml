@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVoxel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Voxel Position="-3.00920622985432,-2.9946522938316,0.143164115082136" MaxWidth="0" MaxLength="2400" Width="6" Height="0.45" Depth="0.45" ModelType="1" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="45x45" />
+  <Voxel Position="-3,-3,0" MaxWidth="1200" MaxLength="2400" Width="6" Height="6" Depth="0.12" ModelType="2" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="12T" />
+  <Voxel Position="-3.00920622985432,-1.9946522938316,0.143164115082136" MaxWidth="0" MaxLength="2400" Width="6" Height="0.45" Depth="0.45" ModelType="1" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="45x45" />
+  <Voxel Position="-3.00920622985432,-2.9946522938316,0.143164115082136" MaxWidth="0" MaxLength="2400" Width="6" Height="0.45" Depth="0.45" ModelType="1" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="45x45" />
+  <Voxel Position="-3.00920622985432,1.5053477061684,0.143164115082136" MaxWidth="0" MaxLength="2400" Width="6" Height="0.45" Depth="0.45" ModelType="1" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="45x45" />
+  <Voxel Position="-3.00920622985432,2.5053477061684,0.143164115082136" MaxWidth="0" MaxLength="2400" Width="6" Height="0.45" Depth="0.45" ModelType="1" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="45x45" />
+  <Voxel Position="-3,-3,1" MaxWidth="0" MaxLength="2400" Width="0" Height="0" Depth="0.12" ModelType="2" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="12T" />
+  <Voxel Position="-3,-2.989396661492,0.606033385079957" MaxWidth="1200" MaxLength="2400" Width="6" Height="6" Depth="0.12" ModelType="2" AngleX="0" AngleY="0" AngleZ="0" TextureName="나왕" ProductName="12T" />
+</ArrayOfVoxel>

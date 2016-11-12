@@ -1,0 +1,374 @@
+﻿<UserControl x:Class="SF_DIY.DoItYourSlefControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SF_DIY"
+             xmlns:Helix="http://helix-toolkit.org/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Helix:HelixViewport3D}">
+            <Setter Property="ShowViewCube" Value="False"/>
+            <Setter Property="ShowCoordinateSystem" Value="True"/>
+            <Setter Property="Background" Value="#9F9F9F"/>
+            <Setter Property="IsRotationEnabled" Value="False"/>
+            <Setter Property="CurrentPosition" Value="{Binding CurrentPosition}"/>
+            <Setter Property="EnableCurrentPosition" Value="true"/>
+        </Style>
+
+        <Style x:Key="ViewButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <TextBlock FontWeight="Bold" Padding="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter/>
+                        </Border>
+                        </TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#bfcddb"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}"  Value="True">
+                    <Setter Property="Background" Value="#99b4d1" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ViewMaximizeStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked}"  Value="True">
+                    <Setter Property="Grid.Column" Value="0"/>
+                    <Setter Property="Grid.ColumnSpan" Value="2"/>
+                    <Setter Property="Grid.Row" Value="0"/>
+                    <Setter Property="Grid.RowSpan" Value="2"/>
+                    <Setter Property="Panel.ZIndex" Value="1"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Menu IsMainMenu="True" Height="15" DockPanel.Dock="Top">
+            <MenuItem Header="파일" Height="15" FontSize="12">
+                <MenuItem Header="새창" PreviewMouseLeftButtonDown="NewButton_Click" InputGestureText="Ctrl+N">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="NoteOutline"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="열기" PreviewMouseLeftButtonDown="OpenButton_Click" InputGestureText="Ctrl+O">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="FolderOutline" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="저장" PreviewMouseLeftButtonDown="ToSaveButton_Click"  InputGestureText="Ctrl+S">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentSave" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="다른 이름으로 저장" PreviewMouseLeftButtonDown="SaveButton_Click" >
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentSaveAll" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="인테리어 가구로 저장 하기" PreviewMouseLeftButtonDown="InteriorButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Home"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="편집" Height="15" FontSize="12">
+                <MenuItem Header="실행 취소" InputGestureText="Ctrl+Z" PreviewMouseLeftButtonDown="UndoButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Undo"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="다시 실행" InputGestureText="Ctrl+Y" PreviewMouseLeftButtonDown="RedoButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Redo"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="잘라내기" InputGestureText="Ctrl+X" PreviewMouseLeftButtonDown="CutButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentCut"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="복사" InputGestureText="Ctrl+C" PreviewMouseLeftButtonDown="CopyButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentCopy"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="붙여넣기" InputGestureText="Ctrl+V" PreviewMouseLeftButtonDown="PasteButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentPaste"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="지우기" InputGestureText="Delete" PreviewMouseLeftButtonDown="DeleteButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Delete"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="전체 선택" InputGestureText="Ctrl+A" PreviewMouseLeftButtonDown="AllSelectButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="SelectAll"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="기능" Height="15" FontSize="12">
+                <MenuItem Header="재료 추가"  PreviewMouseLeftButtonDown="AddModel_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Plus"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="선택 재료 15도 회전" InputGestureText="Ctrl+R" PreviewMouseLeftButtonDown="Rotate3dButton_Clicked">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Rotate3d"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="동시 확대 사용" PreviewMouseLeftButtonDown="ZoomBindingButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContrastBox"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="외곽선 없애기" PreviewMouseLeftButtonDown="OutLineButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Hexagon"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="외곽선 표시" PreviewMouseLeftButtonDown="OutLineButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Cube"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="외곽선만 보기" PreviewMouseLeftButtonDown="OutLineButton_Click" >
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="CubeOutline"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="길이 정보 보기" PreviewMouseLeftButtonDown="ShowSizeTextButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="MessageText"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="길이 정보 보지 않음" PreviewMouseLeftButtonDown="ShowSizeTextButton_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="MessageTextOutline"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="도움말" Height="15" FontSize="12">
+                <MenuItem Header="도움말 보기" InputGestureText="F1">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Help"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
+                <Button ToolTip="인테리어 가구로 만들기 " PreviewMouseLeftButtonDown="InteriorButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="Home"/>
+                </Button>
+                <Button ToolTip="새 페이지 (Ctrl + N)" Style="{StaticResource MaterialDesignFlatButton}" PreviewMouseLeftButtonDown="NewButton_Click">
+                    <materialDesign:PackIcon Kind="NoteOutline"/>
+                </Button>
+                <Button ToolTip="열기 (Ctrl + O)" PreviewMouseLeftButtonDown="OpenButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="FolderOutline"/>
+                </Button>
+                <Button ToolTip="저장 (Ctrl + S)" PreviewMouseLeftButtonDown="ToSaveButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="ContentSave"/>
+                </Button>
+                <Button ToolTip="다른 이름으로 저장하기 (Ctrl + S)"  PreviewMouseLeftButtonDown="SaveButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Kind="ContentSaveAll" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="전체 선택 (Ctrl + A)" PreviewMouseLeftButtonDown="AllSelectButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="SelectAll" />
+                </Button>
+                <Button ToolTip="복사 (Ctrl + C)" PreviewMouseLeftButtonDown="CopyButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="ContentCopy"/>
+                </Button>
+                <Button ToolTip="잘라내기 (Ctrl + X)" PreviewMouseLeftButtonDown="CutButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="ContentCut"/>
+                </Button>
+                <Button ToolTip="붙여넣기 (Ctrl + V)" PreviewMouseLeftButtonDown="PasteButton_Click" Style="{StaticResource MaterialDesignFlatButton}" >
+                    <materialDesign:PackIcon Kind="ContentPaste"/>
+                </Button>
+
+                <Button ToolTip="뒤로 되돌리기 (Ctrl + Z)" Name="btnUndo" PreviewMouseLeftButtonDown="UndoButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Kind="Undo" />
+                </Button>
+                <Button ToolTip="앞으로 되돌리기 (Ctrl + Y)" Name="btnRedo" PreviewMouseLeftButtonDown="RedoButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Kind="Redo" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="재료추가" PreviewMouseLeftButtonDown="AddModel_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Kind="Plus" />
+                </Button>
+                <Button ToolTip="회전 (Ctrl + R)" PreviewMouseLeftButtonDown="Rotate3dButton_Clicked" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Kind="Rotate3d"/>
+                </Button>
+                <Button ToolTip="동시 확대" PreviewMouseLeftButtonDown="ZoomBindingButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Name="ZoomBindingIcon" Kind="ContrastBox"/>
+                </Button>
+                <!--<Button ToolTip="길이측정">
+                    <materialDesign:PackIcon Kind="Ruler"/>
+                </Button>-->
+                <Button ToolTip="외곽선 표시 (Ctrl + L)" Command="{Binding ShowLinesVisual3D}" PreviewMouseLeftButtonDown="OutLineButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Name="OutlineIcon" Kind="Cube"/>
+                </Button>
+                <Button ToolTip="길이 정보 표시 (Ctrl + T)" Command="{Binding ShowSizeTextCommand}" PreviewMouseLeftButtonDown="ShowSizeTextButton_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Name="ShowSizeTextIcon" Kind="MessageText"/>
+                </Button>
+                <Button ToolTip="그리드 이동 (Ctrl + H)" PreviewMouseLeftButtonDown="IsGridMove_Click" Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon Name="GridIcon" Kind="GridOff"/>
+                </Button>
+                <Separator/>
+                <Button ToolTip="도움말" Style="{StaticResource MaterialDesignFlatButton}" PreviewMouseLeftButtonDown="HelpButton_Click">
+                    <materialDesign:PackIcon Kind="Help"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="245"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="2" Padding="2">
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="125*"/>
+                        <RowDefinition Height="117*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0">
+                        <local:MaterialEditControl/>
+                    </ScrollViewer>
+
+                    <local:MaterialGrid Grid.Row="1" />
+                    <GridSplitter Grid.Row="0" Height="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="2" Padding="2">
+                <Grid  Name="doitvisual">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TopLeftView" DataContext="{Binding ElementName=TopLeftLabel}">
+                        <Grid.Style>
+                            <Style BasedOn="{StaticResource ViewMaximizeStyle}"/>
+                        </Grid.Style>
+                        <Helix:HelixViewport3D x:Name="viewportTop" ClipToBounds="False"  IsInertiaEnabled="False" Keyboard.PreviewKeyDown="viewport_PreviewKeyDown" MouseDown="viewportTop_MouseDown" MouseMove="viewportTop_MouseMove" MouseUp="viewportTop_MouseUp" RotateGesture="Alt+RightClick" PanGesture="RightClick" IsHeadLightEnabled="False" CurrentPosition="{Binding CurrentPosition, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" >
+                            <Helix:HelixViewport3D.Camera>
+                                <OrthographicCamera x:Name="TopCamera" Position="0,0,80.00" LookDirection="0,0,-80.00" UpDirection="0,1,0" Width="56"/>
+                            </Helix:HelixViewport3D.Camera>
+                            <local:GridLines/>
+                            <ModelVisual3D>
+                                <ModelVisual3D.Content>
+                                    <AmbientLight Color="#FFFFFF"/>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+                            <ModelVisual3D Content="{Binding Model}"/>
+                            <ModelUIElement3D Model="{Binding ControllerModel}"/>
+
+                        </Helix:HelixViewport3D>
+                        <ToggleButton x:Name="TopLeftLabel" Content="윗면" Style="{StaticResource ViewButtonStyle}"/>
+                    </Grid>
+
+                    <Grid x:Name="TopRightView" DataContext="{Binding ElementName=TopRightLabel}">
+                        <Grid.Style>
+                            <Style BasedOn="{StaticResource ViewMaximizeStyle}">
+                                <Setter Property="Grid.Column" Value="1"/>
+                            </Style>
+                        </Grid.Style>
+                        <Helix:HelixViewport3D  x:Name="viewport" ClipToBounds="False"  IsRotationEnabled="True" Keyboard.PreviewKeyDown="viewport_PreviewKeyDown" CurrentPosition="{Binding CurrentPosition, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+						MouseDown="viewport_MouseDown" MouseMove="viewport_MouseMove" MouseUp="viewport_MouseUp" >
+                            <Helix:HelixViewport3D.Camera>
+                                <PerspectiveCamera Position="20, 20, 20" NearPlaneDistance="1" LookDirection="-20 -20 -20" FieldOfView="45" UpDirection="0 0 1"/>
+                            </Helix:HelixViewport3D.Camera>
+
+                            <local:GridLines x:Name="GridLine"/>
+                            <Helix:DefaultLights/>
+                            <ModelVisual3D Content="{Binding Model}"/>
+                        </Helix:HelixViewport3D>
+                        <ToggleButton x:Name="TopRightLabel" Content="자율" Style="{StaticResource ViewButtonStyle}"/>
+
+                    </Grid>
+
+                    <Grid x:Name="BottomLeftView" DataContext="{Binding ElementName=BottomLeftLabel}">
+                        <Grid.Style>
+                            <Style BasedOn="{StaticResource ViewMaximizeStyle}">
+                                <Setter Property="Grid.Row" Value="1"/>
+                            </Style>
+                        </Grid.Style>
+                        <Helix:HelixViewport3D x:Name="viewportFront" ClipToBounds="False" IsInertiaEnabled="False" Keyboard.PreviewKeyDown="viewport_PreviewKeyDown" RotateGesture="Alt+RightClick" PanGesture="RightClick" MouseDown="viewportFront_MouseDown" MouseUp="viewportFront_MouseUp" MouseMove="viewportFront_MouseMove" IsHeadLightEnabled="False"
+						CurrentPosition="{Binding CurrentPosition, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}">
+                            <Helix:HelixViewport3D.Camera>
+                                <OrthographicCamera x:Name="FrontCamera" Position="0,-80.00,0" LookDirection="0,80.00,0" UpDirection="0,0,1" Width="56"/>
+                            </Helix:HelixViewport3D.Camera>
+                            <ModelVisual3D>
+                                <ModelVisual3D.Content>
+                                    <AmbientLight Color="#FFFFFF"/>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+                            <ModelVisual3D Content="{Binding Model}"/>
+                            <ModelVisual3D Content="{Binding ControllerModel}"/>
+                            <local:GridLines YAxisLineColor="#4B4B96" LengthDirection="1,0,0" Normal="0,-1,0" />
+                        </Helix:HelixViewport3D>
+                        <ToggleButton x:Name="BottomLeftLabel" Content="전면" Style="{StaticResource ViewButtonStyle}"/>
+                    </Grid>
+
+                    <Grid x:Name="BottomRightView" DataContext="{Binding ElementName=BottomRightLabel}">
+                        <Grid.Style>
+                            <Style BasedOn="{StaticResource ViewMaximizeStyle}">
+                                <Setter Property="Grid.Row" Value="1"/>
+                                <Setter Property="Grid.Column" Value="1"/>
+                            </Style>
+                        </Grid.Style>
+                        <Helix:HelixViewport3D x:Name="viewportRight" ClipToBounds="False" IsInertiaEnabled="False" Keyboard.PreviewKeyDown="viewport_PreviewKeyDown" RotateGesture="Alt+RightClick" PanGesture="RightClick" MouseDown="viewportRight_MouseDown" MouseMove="viewportRight_MouseMove" MouseUp="viewportRight_MouseUp" IsHeadLightEnabled="False"
+                                           CurrentPosition="{Binding CurrentPosition, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}">
+                            <Helix:HelixViewport3D.Camera>
+                                <OrthographicCamera x:Name="RightCamera" Position="80.00,0,0" LookDirection="-80.00,0,0" UpDirection="0,0,1" Width="56"/>
+                            </Helix:HelixViewport3D.Camera>
+                            <ModelVisual3D Content="{Binding Model}"/>
+                            <ModelVisual3D Content="{Binding ControllerModel}"/>
+                            <ModelVisual3D>
+                                <ModelVisual3D.Content>
+                                    <AmbientLight Color="#FFFFFF"/>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+                            <local:GridLines XAxisLineColor="#4B964B" YAxisLineColor="#4B4B96" LengthDirection="0,1,0" Normal="1,0,0" />
+                        </Helix:HelixViewport3D>
+                        <ToggleButton x:Name="BottomRightLabel" Content="측면" Style="{StaticResource ViewButtonStyle}"/>
+                    </Grid>
+                    <GridSplitter Grid.Column="0" Grid.RowSpan="2" Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="2" Height="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+                </Grid>
+            </Border>
+            <GridSplitter Grid.Column="0" Grid.RowSpan="2" Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+        </Grid>
+    </DockPanel>
+</UserControl>

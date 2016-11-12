@@ -1,0 +1,97 @@
+﻿<Window x:Class="SF_DIY.Domain.MaterialAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_DIY.Domain"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:domain ="clr-namespace:SF_DIY_Domain"
+             mc:Ignorable="d" 
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            Background="{DynamicResource MaterialDesignPaper}"
+            Height="380" Width="450" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel Margin="10">
+        <TextBlock DockPanel.Dock="Top">재료 선택</TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="58"/>
+            </Grid.RowDefinitions>
+            <TabControl Grid.Row="0" SelectedIndex="{Binding SelectedTabControl}"  >
+                <TabItem Header="각목">
+                    <DataGrid Margin="0 8 0 0" SelectedItem="{Binding SelectedDataGridItem}" ItemsSource="{Binding RectangularList}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="이름" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding Width}" Header="폭(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding Height}" Header="높이(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding MaxLength}" Header="최대길이(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </TabItem>
+                <TabItem Header="합판" x:Name="habpan">
+
+                    <DataGrid Margin="0 8 0 0" SelectedItem="{Binding SelectedDataGridItem}" ItemsSource="{Binding BoardList}" CanUserDeleteRows="False" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="이름" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding Height}" Header="높이(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding MaxLength}" Header="최대길이(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding MaxWidth}" Header="최대너비(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </TabItem>
+                <TabItem Header="가공목">
+
+                    <DataGrid Margin="0 8 0 0" SelectedItem="{Binding SelectedDataGridItem}" ItemsSource="{Binding CylinderList}"  
+                                  CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="이름" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding Diameter}" Header="지름(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                            <DataGridTextColumn Binding="{Binding MaxLength}" Header="최대길이(mm)" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </TabItem>
+            </TabControl>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <StackPanel Margin="20,10,0,0" >
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">길이(mm) :</TextBlock>
+                <TextBox MinWidth="72" Margin="10,0,5,10"
+            		VerticalAlignment="Bottom" materialDesign:ValidationAssist.UsePopup="True"
+            		Text="{Binding SelectedLength, UpdateSourceTrigger=PropertyChanged}"
+                         Width="52">
+                </TextBox>
+                </StackPanel>
+                <StackPanel Margin="20,10,0,0">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">높이(mm) :</TextBlock>
+                <TextBox MinWidth="72" Margin="10,0,5,10"
+            		VerticalAlignment="Bottom" 
+            		Text="{Binding SelectedWidth, UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding ElementName=habpan, Path=IsSelected}" materialDesign:ValidationAssist.UsePopup="True"
+                         Width="52"/>
+                </StackPanel>
+                <Button Command="{Binding AcceptCommand}" IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" Content="추가" Margin="50,6,0,7"/>
+                <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}" Click="CancelButtonOnClick" Content="취소"/>
+
+            </StackPanel>
+        </Grid>
+
+
+    </DockPanel>
+</Window>

@@ -1,0 +1,10 @@
+﻿<Window x:Class="SF_DIY.TransitionsHelp.HelpSwitcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_DIY.TransitionsHelp"
+        mc:Ignorable="d"
+        Width="1200" Height="750" WindowStyle="ToolWindow" Title="도움말">
+        <local:HelpDIYHome/>
+</Window>

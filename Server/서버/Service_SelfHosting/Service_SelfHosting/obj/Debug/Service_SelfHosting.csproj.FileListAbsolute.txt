@@ -1,0 +1,20 @@
+c:\users\bit_89\documents\visual studio 2015\Projects\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.dll
+c:\users\bit_89\documents\visual studio 2015\Projects\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.pdb
+c:\users\bit_89\documents\visual studio 2015\Projects\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.csprojResolveAssemblyReference.cache
+c:\users\bit_89\documents\visual studio 2015\Projects\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.dll
+c:\users\bit_89\documents\visual studio 2015\Projects\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.pdb
+C:\Users\bit_25\Desktop\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.dll
+C:\Users\bit_25\Desktop\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.pdb
+C:\Users\bit_25\Desktop\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.csprojResolveAssemblyReference.cache
+C:\Users\bit_25\Desktop\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.dll
+C:\Users\bit_25\Desktop\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.pdb
+C:\Users\Bit_89\Desktop\새 폴더 (15)\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.dll
+C:\Users\Bit_89\Desktop\새 폴더 (15)\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.pdb
+C:\Users\Bit_89\Desktop\새 폴더 (15)\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.csprojResolveAssemblyReference.cache
+C:\Users\Bit_89\Desktop\새 폴더 (15)\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.dll
+C:\Users\Bit_89\Desktop\새 폴더 (15)\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.pdb
+C:\Users\gtpar\Desktop\Last 서버\서버\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.dll
+C:\Users\gtpar\Desktop\Last 서버\서버\Service_SelfHosting\Service_SelfHosting\bin\Debug\Service_SelfHosting.pdb
+C:\Users\gtpar\Desktop\Last 서버\서버\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.csprojResolveAssemblyReference.cache
+C:\Users\gtpar\Desktop\Last 서버\서버\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.dll
+C:\Users\gtpar\Desktop\Last 서버\서버\Service_SelfHosting\Service_SelfHosting\obj\Debug\Service_SelfHosting.pdb

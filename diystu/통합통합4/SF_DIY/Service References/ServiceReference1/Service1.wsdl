@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8090/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8090/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8090/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8090/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/For_Seller" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_LoadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoadList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoadList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRectangular_lumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRectangular_lumber" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRectangular_lumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRectangular_lumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBoard_lumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoard_lumber" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBoard_lumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoard_lumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCylinder_lumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCylinder_lumber" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCylinder_lumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCylinder_lumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetImageFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetImageFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProductResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="LoadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoadImage" message="tns:IService1_LoadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoadImageResponse" message="tns:IService1_LoadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoadList" message="tns:IService1_LoadList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoadListResponse" message="tns:IService1_LoadList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveImage" message="tns:IService1_SaveImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveImageResponse" message="tns:IService1_SaveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveImage" message="tns:IService1_RemoveImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveImageResponse" message="tns:IService1_RemoveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRectangular_lumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRectangular_lumber" message="tns:IService1_GetRectangular_lumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRectangular_lumberResponse" message="tns:IService1_GetRectangular_lumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoard_lumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBoard_lumber" message="tns:IService1_GetBoard_lumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBoard_lumberResponse" message="tns:IService1_GetBoard_lumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCylinder_lumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCylinder_lumber" message="tns:IService1_GetCylinder_lumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCylinder_lumberResponse" message="tns:IService1_GetCylinder_lumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetImageFile" message="tns:IService1_GetImageFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetImageFileResponse" message="tns:IService1_GetImageFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveProduct" message="tns:IService1_SaveProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveProductResponse" message="tns:IService1_SaveProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveProduct" message="tns:IService1_RemoveProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveProductResponse" message="tns:IService1_RemoveProduct_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoadImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoadImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadList">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoadList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRectangular_lumber">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRectangular_lumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoard_lumber">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBoard_lumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCylinder_lumber">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCylinder_lumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageFile">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetImageFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProduct">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProduct">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:8090/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

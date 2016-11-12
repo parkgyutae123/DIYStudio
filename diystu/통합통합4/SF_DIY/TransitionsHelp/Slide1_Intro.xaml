@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SF_DIY.TransitionsHelp.Slide1_Intro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SF_DIY.TransitionsHelp"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="1000">
+    <materialDesign:ColorZone VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel VerticalAlignment="Center" >
+            <TextBlock Grid.Row="0" FontSize="30" HorizontalAlignment="Center"><Bold><Run Text="DIY_STUDIO도움말"/></Bold></TextBlock>
+            <TextBlock>
+            </TextBlock>
+            <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    DIY_STUDIO는 3D를 이용한 가구제작과 만든가구를 이용하여 가상으로 배치하여 DIY에 쉽게 다가가는 인테리어 디자인 프로그램입니다.
+            </TextBlock>
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="1000"  Height="600">
+                <Grid.Background>
+                    <ImageBrush ImageSource="1.PNG"/>
+                </Grid.Background>
+            </Grid>
+            <!-- you can easily use the move next, previous, first and last commands -->
+            <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" Margin="64"
+                Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
+                <materialDesign:PackIcon Kind="Pill" />
+            </Button>
+        </StackPanel>
+    </materialDesign:ColorZone>
+</UserControl>

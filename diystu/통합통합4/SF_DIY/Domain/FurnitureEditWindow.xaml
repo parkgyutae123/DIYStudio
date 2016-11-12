@@ -1,0 +1,91 @@
+﻿<Window x:Class="SF_DIY.Domain.FurnitureEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF_DIY.Domain"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="가구 상세수정" Height="350" Width="400" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".8*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="이름" Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">이름 :</TextBlock>
+                    <TextBox Name="tb_Name" materialDesign:TextFieldAssist.Hint="여기에 이름을 입력하세요" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                </StackPanel>
+            </GroupBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="위치" Grid.Column="0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">중심점 X (cm):</TextBlock>
+                            <TextBox Name="tb_X" Width="50" Margin="20 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">중심점 Y (cm):</TextBlock>
+                            <TextBox Name="tb_Y" Width="50" Margin="20 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Margin="3" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center">고도 (cm):</TextBlock>
+                            <TextBox Name="tb_Z" Margin="20 0 0 0" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">각도 ( ˚ ):</TextBlock>
+                            <TextBox Name="tb_AngleZ" Width="50" Margin="20 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="사이즈" Grid.Column="2">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">너비 (cm):</TextBlock>
+                            <TextBox Name="tb_SizeX" Width="50" Margin="20 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">깊이 (cm):</TextBlock>
+                            <TextBox Name="tb_SizeY" Width="50" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock VerticalAlignment="Center">높이 (cm):</TextBlock>
+                            <TextBox Name="tb_SizeZ" Width="50" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="36*"/>
+                    <ColumnDefinition Width="99"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="99"/>
+                    <ColumnDefinition Width="36*"/>
+                </Grid.ColumnDefinitions>
+                <Button Click="OKButton_Click" Grid.Column="1" Content="확인"/>
+                <Button Click="CancelButton_Click" Grid.Column="3" Content="취소"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="SF_DIY.TransitionsHelp.Slide5_Help"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:SF_DIY.TransitionsHelp"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1000">
+
+    <materialDesign:ColorZone Mode="PrimaryLight" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="64">
+            <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" TextWrapping="Wrap" TextAlignment="Center" FontSize="30">
+                가격추산
+            </TextBlock>
+            <TextBlock>
+            </TextBlock>
+            <TextBlock FontSize="20">
+                가격추산은 사용자가 만든 가구에대한  재료의 정보를 최적알고리즘을 보여주고 최소비용을 제공합니다.
+            </TextBlock>
+            
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="1000"  Height="577">
+                <Grid.Background>
+                    <ImageBrush ImageSource="5.jpg"/>
+                </Grid.Background>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" 
+                        Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
+                        VerticalAlignment="Center"
+                        Margin="16">
+                    <materialDesign:PackIcon Kind="StepBackward" />
+                </Button>
+                </StackPanel>
+        </StackPanel>
+    </materialDesign:ColorZone>
+</UserControl>
